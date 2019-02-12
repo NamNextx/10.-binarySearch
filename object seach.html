@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="number" id="idInput">
+    <input type="button" value="Find" onclick="myArray()">
+    <script>
+        function binarySearch(array,key, left, right)
+        {
+            let mid;
+            let l=left;
+            let r=right;
+            let keyNeedFind=key;
+            while(l < r) // Tìm đến khi chỉ còn 1 số duy nhất
+            {
+                mid =parseInt( (l + r) / 2);
+
+                if(array[mid] == keyNeedFind)
+                    break;
+                else if(array[mid] > keyNeedFind)    // Khi cái Key nằm bên trái thằng mid
+                    r = mid - 1;
+                else                     // Khi cái key năm bên phải
+                    l = mid + 1;
+            }
+            alert(array[l]);
+            if(array[l] == keyNeedFind) alert(array[l]);   // Nếu tìm được Key
+            else alert(-1);                    // Nếu như Key không tồn tại trong mảng
+        }
+        function myArray() {
+            let arr=[1,2,3,4,5,6,7,8,9];
+            let x=parseInt(document.getElementById('idInput').value);
+            let left=0;
+            let right=arr.length-1;
+            binarySearch(arr,x,left,right);
+
+        }
+    </script>
+</body>
+</html>
